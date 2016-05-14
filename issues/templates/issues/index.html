@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'issues/style.css' %}" />
+
+{% if latest_issue_list %}
+    <ul>
+    {% for issue in latest_issue_list %}
+        <li><a href="{% url 'issues:detail' issue.id %}">{{ issue.issue_label }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No issues are available.</p>
+{% endif %}
